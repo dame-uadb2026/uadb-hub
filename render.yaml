@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: uadb-study-hub
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: UADB_SECRET_KEY
+        generateValue: true
+      # GITHUB_SAUVEGARDE_TOKEN et GITHUB_SAUVEGARDE_REPO sont à ajouter
+      # manuellement dans l'onglet Environment de Render (pas ici, car ce
+      # sont des informations personnelles/sensibles à ne jamais mettre
+      # dans le code partagé sur GitHub).
